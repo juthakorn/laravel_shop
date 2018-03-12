@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/Controllers/ProductController.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/shop/css/custom.css</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/Controllers/ImageController.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/order/payment.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/category/index.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/composer.json</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/config/app.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/shop/css/style.teal.flat.css</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/shop/js/cart.js</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/dist/js/form-dropzone.js</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/order_admin/index.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/plugins/dropzone/css/dropzone.css</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/dist/css/custom-admin.css</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/config/lfm.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/Controllers/FrontController.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/front/product_all.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/plugins/tinymce/custom_admin_tinymce.js</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/forum/bast-sell-left.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/Controllers/OrderAdminController.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/layouts/admin.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/helpers.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/public/shop/js/mimity.js</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/product/load_image.blade.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/app/Http/Controllers/Auth/LoginController.php</file>
+            <file>file:/D:/xampp/htdocs/laravel_shop/resources/views/product/index.blade.php</file>
+        </group>
+    </open-files>
+</project-private>
