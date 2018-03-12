@@ -163,7 +163,11 @@ class Cart{
         });
     }
     static chkdelivery(){
-        if($('[name="delivery"]').val() == ""){
+        if($('[name="payment"]').val() == ""){
+            alert('กรุณาเลือกการชำระเงิน');
+            $('[name="payment"]').css({'border-color':'red'});
+            return false;
+        }else if($('[name="delivery"]').val() == ""){
             alert('กรุณาเลือกการจัดส่ง');
             $('[name="delivery"]').css({'border-color':'red'});
             return false;

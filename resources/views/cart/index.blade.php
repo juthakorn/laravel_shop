@@ -315,6 +315,7 @@ $('body').on('change', 'select[name="delivery"]', function(event) {
             $(this).val(1);
             return false;
         }
+        $(this).css({'border-color':''});
     }
     ObjCart.delivery($(this).val());
 });
@@ -325,6 +326,7 @@ $('body').on('change', 'select[name="payment"]', function(event) {
             $(this).val(1);
             return false;
         }
+        $(this).css({'border-color':''});
     }
     ObjCart.payment($(this).val());
 });

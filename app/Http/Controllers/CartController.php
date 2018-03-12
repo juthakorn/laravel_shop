@@ -272,7 +272,7 @@ class CartController extends Controller
                 Cookie::queue('cart_info', $data, 45000);                
             }
             Cookie::queue('redirect_stap2', true, 1500);
-            return redirect(url(login()));
+            return redirect(url(register()));
         }
         
     }

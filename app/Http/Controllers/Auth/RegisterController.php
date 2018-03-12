@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Cookie;
 class RegisterController extends Controller
 {
     /*
@@ -37,6 +40,51 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        $data['navigator'] = [
+            ['url' => '/','text' => trans('common.home')],
+            ['text' => trans('common.register')],
+        ];
+        return view('auth.register', $data);
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+        
+        /*
+            Event register to Check Cart
+         */
+        CheckCookieCart();
+        /*
+        if live stap2 is address to redirect "checkout/address"
+         */
+        if (Cookie::get('redirect_stap2') !== null){
+            Cookie::queue(Cookie::forget('redirect_stap2'));
+            return redirect(url(UrlCheckoutAddress()));
+        }else{
+            return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+        }
+
     }
 
     /**

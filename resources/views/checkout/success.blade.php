@@ -131,10 +131,8 @@
             </div>
             <nav>
                 <ul class="pager">
-                    <li class="next">
-                        {!! Form::open(['method' => 'POST', 'url' => url(UrlCheckoutSuccess()), 'style'=>'float: right;']) !!}                      
-                        <button type="submit" class="btn btn-theme"> ไปหน้าแจ้งชำระเงิน</button>
-                        {!! Form::close() !!} 
+                    <li class="next">                    
+                        <a type="submit" href="{{ url(UrlPayment()) }}" class="btn btn-theme"> ไปหน้าแจ้งชำระเงิน</a>                        
                     </li>
                 </ul>
             </nav>
