@@ -36,12 +36,34 @@
                                     <td><a href="{{ url(customer_order_detail($value->order_id)) }}"><span class="badge">{{ $value->order_id }}</span></a></td>
                                     <td>
                                     <?php
-                                    $temp = $value->order_detail->groupBy('product_id');                                    
-                                    foreach ($temp as $keytmp => $valuetmp) {                                       
-                                        $arrimg = App\Model\Product::find($keytmp)->image_stores()->orderBy('product_images.position', "asc")->first()->toArray();
-                                        if(!empty($arrimg)){?>                                                
-                                            <img src="<?= ImgProduct($arrimg['id'], $arrimg['new_name150'])?>" style="height:50px;width: auto;">
-                                        <?php }                                                                                                                       
+                                    $temp = $value->order_detail->groupBy('product_id');     
+                                    //prx($temp->toArray());                               
+                                    foreach ($temp as $keytmp => $valuetmp) { ?>       
+
+
+
+                                        <?php $product = App\Model\Product::find($keytmp);  ?>
+                                        <?php if($product != null) {?>
+                                        <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}">
+                                            <?php                                           
+
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                            <?php } ?>
+                                        </a>
+                                        <?php }else{ ?>
+                                       
+                                            <?php 
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                            <?php } ?>                                        
+                                        <?php } 
+
+
                                     }
                                     ?>
                                     </td>

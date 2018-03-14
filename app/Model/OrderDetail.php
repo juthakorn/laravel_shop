@@ -17,10 +17,16 @@ class OrderDetail extends Model
         'sum',
         'option1',
         'option2',
+        'image_store_id'
     ];
     
     public function order()
     {
         return $this->belongsTo(Order::class);
     }  
+    
+    public function image_store()
+    {
+        return $this->hasOne(ImageStore::class, 'id', 'image_store_id');
+    } 
 }

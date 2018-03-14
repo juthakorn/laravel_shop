@@ -199,8 +199,15 @@ class CheckoutController extends Controller
             );
 //            pr($data);
             $order = Order::create($data); //save 1
+
+            
+                                            
+                                            
+
             foreach ($order_detail as $key => $value) {
                 $attr = ProductAttribute::find($value['attr_id']);
+                $image_stores = $attr->product->image_stores()->orderBy('product_images.position', "asc")->first();               
+
                 if(empty($attr)){
                     continue;
                 }
@@ -214,6 +221,7 @@ class CheckoutController extends Controller
                     'sum' => $attr->p_price * $value['qty'],
                     'option1' => $attr->option1,
                     'option2' => $attr->option2,
+                    'image_store_id' => $image_stores->id,
                 ];
                 OrderDetail::create($data_detail);
             }

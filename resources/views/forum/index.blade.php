@@ -26,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php 
+                        <?php  
                         foreach ($forums as $key => $value) {  ?>  
                         <tr>
                             <td class="forum-title">
@@ -35,7 +35,7 @@
                             </td>
                             <td>
                                 <?php
-                                if($value->user_id != 0){
+                                if($value->user_id !== 0){
                                     echo $value->user->isAdmin() ? "Admin" : $value->user->name;
                                 }else{
                                     echo $value->guest_name. " (Guest)";
@@ -46,18 +46,20 @@
                             <td class="post_last">
                            <?php
                            $last_reply = $value->Reply()->orderBy('reply.id', "desc")->take(1)->get();
-                           
+                         
                            if($last_reply->isEmpty()){
-                               if($value->user_id != 0){
+                               if($value->user_id !== 0){
+                                prx($value->user);
                                    echo $value->user->isAdmin() ? "Admin" : $value->user->name;
                                } else {
                                    echo $value->guest_name. " (Guest)";
                                }                               
                                echo "<p>".DateTimeForum($value->created_at)."</p>";
                            }else{
-                               
-                               if($last_reply[0]->user_id != 0){
-                                   echo $last_reply[0]->user->isAdmin() ? "Admin" : $last_reply[0]->user->name;
+
+                               if($last_reply[0]->user_id !== 0){
+                                $last_reply_user = $last_reply[0]->user;
+                                  echo @$last_reply[0]->user->role_id === 1 ? "Admin" : @$last_reply[0]->user->name;
                                }else{
                                    echo $last_reply[0]->guest_name. " (Guest)";
                                }                               

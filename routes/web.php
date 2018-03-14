@@ -146,6 +146,23 @@ Route::post('admin/order/cancel_order/', ['uses' => 'OrderAdminController@cancel
 Route::delete('admin/order/{id}', ['uses' => 'OrderAdminController@destroy', 'as' => 'adminorder.destroy']);
 
 
+Route::get('test88', function (){
+ \DB::enableQueryLog();
+ $attr = App\Model\OrderDetail::all();
+ foreach ($attr as $key => $value) {
+ 	$arr = App\Model\Product::find($value->product_id)->image_stores()->orderBy('product_images.position', "asc")->first();
+ 	pr($arr->id);
+ 	$value->update(['image_store_id' => $arr->id]);
+ }        
+ 
+ 
+ 
+
+
+pr(\DB::getQueryLog());
+});
+
+
 //Route::auth();
 Route::get('logout', function (){
     Auth::logout();

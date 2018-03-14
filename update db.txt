@@ -1,0 +1,1 @@
+ALTER TABLE `order_details` ADD `image_store_id` INT NULL DEFAULT NULL AFTER `option2`;
