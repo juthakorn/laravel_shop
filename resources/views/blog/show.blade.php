@@ -21,7 +21,7 @@
                     echo '<span><i class="fa fa-tag"></i> ' . substr($txttag, 0,-2) .'</span>';
                  } ?>
             </small>
-            <img src="<?= !empty($blog->image_logo->id) ? ImgProduct($blog->image_logo->id, $blog->image_logo->new_name) : "/image/nopicture.png" ?>" alt="Blog Detail" class="img-thumbnail">
+            <img src="<?= !empty($blog->image_logo->id) ? ImgProduct($blog->image_logo->id, $blog->image_logo->new_name) : "/image/nopicture.png" ?>" class="img-thumbnail">
             <?= $blog->detail ?>
             <div class="title m-t-3"><span>Share to</span></div>
             <div class="share-button">

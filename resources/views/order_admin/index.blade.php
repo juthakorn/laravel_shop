@@ -110,16 +110,38 @@
                                     <tr>
                                         <td><a href="{{ url(admin_order_detail($value->order_id)) }}"><span class="badge">{{ $value->order_id }}</span></a></td>
                                         <td>
-                                        <?php
-                                        $temp = $value->order_detail->groupBy('product_id');                                    
-                                        foreach ($temp as $keytmp => $valuetmp) {                                       
-                                            $arrimg = App\Model\Product::find($keytmp)->image_stores()->orderBy('product_images.position', "asc")->first()->toArray();
-                                            if(!empty($arrimg)){?>                                                
-                                                <img src="<?= ImgProduct($arrimg['id'], $arrimg['new_name150'])?>" style="height:50px;width: auto;">
-                                            <?php }                                                                                                                       
-                                        }
-                                        ?>
-                                        </td>
+                                    <?php
+                                    $temp = $value->order_detail->groupBy('product_id');     
+                                    //prx($temp->toArray());                               
+                                    foreach ($temp as $keytmp => $valuetmp) { ?>       
+
+
+
+                                        <?php $product = App\Model\Product::find($keytmp);  ?>
+                                        <?php if($product != null) {?>
+                                        <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}" style="text-decoration: none;" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php                                           
+
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                            <?php } ?>
+                                        </a>
+                                        <?php }else{ ?>
+                                       
+                                            <?php 
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php } ?>                                        
+                                        <?php } 
+
+
+                                    }
+                                    ?>
+                                    </td>
                                         <td>{{ DateTime($value->created_at, TRUE) }}</td>
                                         <td>{{ $value->payment_name }}</td>
                                         <td class="text-right">{{ number_format($value->final_sum,2) }}</td>

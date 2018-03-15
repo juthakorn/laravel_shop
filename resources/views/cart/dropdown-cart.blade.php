@@ -43,7 +43,7 @@ if(!empty($data)){
                 <?php 
                 $arrimg = $product->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                 if(!empty($arrimg)){ ?>                                
-                    <img class="media-object img-thumbnail" src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>" width="50" alt="<?=$arrimg[0]['alt']?>" >
+                    <img class="media-object img-thumbnail" src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>" width="50" >
                 <?php }else{ ?>
                     <img class="media-object img-thumbnail" src="{{ URL::asset('image/nopicture.png') }}" width="50">
                 <?php }

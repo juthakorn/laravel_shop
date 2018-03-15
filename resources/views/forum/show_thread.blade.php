@@ -17,7 +17,7 @@
               
             <div class="row row-forum">
                 <div class="col-sm-2 info-post-by">
-                    <img src="{{ !empty($forum->user->user_image) ? url($forum->user->user_image) : url('/shop/images/demo/user.png') }}" alt="" class="img-responsive img-forum">
+                    <img src="{{ !empty($forum->user->user_image) ? url($forum->user->user_image) : url('/shop/images/demo/user.png') }}" class="img-responsive img-forum">
                     <div class="info-post-user">
                     <?php
                     if($forum->user_id != 0){
@@ -55,7 +55,7 @@
             <?php foreach ($data_reply as $key => $value) { ?>
                 <div class="row row-forum">
                     <div class="col-sm-2 info-post-by">
-                        <img src="{{ !empty($value->user->user_image) ? url($value->user->user_image) : url('/shop/images/demo/user.png') }}" alt="" class="img-responsive img-forum">
+                        <img src="{{ !empty($value->user->user_image) ? url($value->user->user_image) : url('/shop/images/demo/user.png') }}" class="img-responsive img-forum">
                         <div class="info-post-user">
                         <?php
                             if($value->user_id != 0){

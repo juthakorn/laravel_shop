@@ -151,7 +151,7 @@
                                                 <td>
 
                                                     <?php $bank = unserialize($value->bank_info); ?>                                        
-                                                    <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" alt="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
+                                                    <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" title="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
                                                     <div style="float: left;margin-left: 10px;text-align: left;"><p style="margin-bottom: 0">{{ $bank['bank_name'] }}</p><p style="margin-bottom: 0">{{ $bank['bank_number'] }}</p></div>
 
                                                 </td>
@@ -192,22 +192,43 @@
                                             ?>
                                             <tr>
                                                 <td style="width:65px;padding: 5px; " >
-                                                    <?php $product = App\Model\Product::find($value->product_id); ?>
-                                                    <a href="{{ url(UrlProduct($value->product_id, $product->slug_url)) }}">
-                                                        <?php
-                                                        $arrimg = $product->image_stores()->orderBy('product_images.position', "asc")->first()->toArray();
-                                                        if(!empty($arrimg)){?>                                                
-                                                        <img src="<?= ImgProduct($arrimg['id'], $arrimg['new_name150'])?>" class="media-object img-thumbnail" style="width:55px">
-                                                        <?php }  
-                                                        ?>
-                                                    </a>                               
+                                                    
+
+                                                    <?php $product = App\Model\Product::find($value->product_id);  ?>
+                                                <?php if($product != null) {?>
+                                                        <a href="{{ url(UrlProduct($value->product_id, $product->slug_url)) }}">
+                                                    <?php 
+                                                    if(file_exists(str_replace(url("/")."/", "", ImgProduct($value->image_store->id, $value->image_store->new_name150)))){ ?>                                           
+                                                            <img src="<?= ImgProduct($value->image_store->id, $value->image_store->new_name150)?>" class="media-object img-thumbnail" style="width:55px">
+                                                            <?php }else{ ?>
+                                                            <img src="<?= ImgNoProduct()?>" class="media-object img-thumbnail" style="width:55px">
+                                                            <?php } ?>
+                                                        </a>
+                                                    <?php }else{ ?>
+                                               
+                                                    <?php 
+                                                    if(file_exists(str_replace(url("/")."/", "", ImgProduct($value->image_store->id, $value->image_store->new_name150)))){ ?>                                           
+                                                    <img src="<?= ImgProduct($value->image_store->id, $value->image_store->new_name150)?>" class="media-object img-thumbnail" style="width:55px">
+                                                    <?php }else{ ?>
+                                                        <img src="<?= ImgNoProduct()?>" class="media-object img-thumbnail" style="width:55px">
+                                                    <?php } ?>                                        
+                                                    <?php } ?>    
+
+
+
+
                                                 </td>
                                                 <td>
                                                     <div>
+                                                    <?php if($product != null) {?>
                                                         <p><a href="{{ url(UrlProduct($value->product_id, $product->slug_url)) }}" class="d-block">{{ $value->p_name }}</a></p>
-                                                    <small>{{ $value->option1." ".$value->option2 }}</small>
-
-                                                    </div>
+                                                            <small>{{ $value->option1." ".$value->option2 }}</small>
+                                                    <?php }else{ ?>
+                                                        <p>{{ $value->p_name }}</p>
+                                                        <small>{{ $value->option1." ".$value->option2 }}</small>
+                                                    <?php } ?>
+                                            </div>
+                                                    
                                                 </td>
                                                 <td class="text-right">{{ number_format($value->p_price,2) }}</td>
                                                 <td class="text-center">{{ $value->p_quantity }}</td>

@@ -30,7 +30,7 @@
                             <td class="right"><strong>{{ trans('common.Bank account') }} :</strong></td>
                             <td class="left">
                                 <?php $bank = unserialize($payment->bank_info); ?>                                        
-                                <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" alt="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
+                                <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" title="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
                                 <div style="float: left;margin-left: 10px;text-align: left;"><p style="margin-bottom: 0">{{ $bank['bank_name'] }}</p><p style="margin-bottom: 0">{{ $bank['bank_number'] }}</p></div>
                             </td>
                         </tr>
@@ -89,10 +89,26 @@
                                     <?php
                                     $temp = $value->order_detail->groupBy('product_id');                                    
                                     foreach ($temp as $keytmp => $valuetmp) {                                       
-                                        $arrimg = App\Model\Product::find($keytmp)->image_stores()->orderBy('product_images.position', "asc")->first()->toArray();
-                                        if(!empty($arrimg)){?>                                                
-                                            <img src="<?= ImgProduct($arrimg['id'], $arrimg['new_name150'])?>" style="height:50px;width: auto;">
-                                        <?php }                                                                                                                       
+                                       $product = App\Model\Product::find($keytmp);  ?>
+                                        <?php if($product != null) {?>
+                                            <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}" style="text-decoration: none;" title="{{ $valuetmp[0]->p_name }}">
+                                        <?php                                           
+
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                            <?php } ?>
+                                        </a>
+                                        <?php }else{ ?>
+                                       
+                                            <?php 
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php } ?>                                        
+                                        <?php }                                                                                                                        
                                     }
                                     ?>
                                     </td>

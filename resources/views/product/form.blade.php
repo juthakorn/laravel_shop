@@ -364,7 +364,11 @@ jQuery(document).ready(function () {
         event.preventDefault();
         var newAlbum = $("#album_name");
         var inputAlbum = newAlbum.closest('.form-group');
-
+        if($("#album_name").val() == ""){
+            inputAlbum.next('.text-danger').remove();
+            inputAlbum.addClass('has-error');
+            return false;
+        }
         $.ajax({
             url: "{{ url("admin/image/save_album") }}",
             method: 'post',

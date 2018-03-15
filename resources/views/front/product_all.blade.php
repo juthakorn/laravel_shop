@@ -49,7 +49,7 @@
                               $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                               if (!empty($arrimg)) {
                                   ?>                                
-                                  <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350']) ?>"  alt="<?= $arrimg[0]['alt'] ?>" >
+                                  <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350']) ?>" >
                               <?php } else { ?>
                                   <img src="{{ URL::asset('image/nopicture.png') }}" >
                               <?php }

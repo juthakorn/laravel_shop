@@ -134,7 +134,8 @@ Route::post('admin/image/saveimg', 'ImageController@saveimg');
 Route::post('admin/image/removeimg', 'ImageController@removeimg');
 Route::post('admin/image/save_album', 'ImageController@save_album');
 Route::get('admin/image/load_album/{id}', 'ImageController@load_album');
-
+Route::get('admin/image/load_album_image/{id}', 'ImageController@load_album_image');
+Route::resource('admin/image', 'ImageController');
 
 //admin order
 Route::any('admin/order/', 'OrderAdminController@index');
@@ -147,19 +148,25 @@ Route::delete('admin/order/{id}', ['uses' => 'OrderAdminController@destroy', 'as
 
 
 Route::get('test88', function (){
- \DB::enableQueryLog();
- $attr = App\Model\OrderDetail::all();
- foreach ($attr as $key => $value) {
- 	$arr = App\Model\Product::find($value->product_id)->image_stores()->orderBy('product_images.position', "asc")->first();
- 	pr($arr->id);
- 	$value->update(['image_store_id' => $arr->id]);
- }        
- 
- 
- 
+	\DB::enableQueryLog();
+	$attr = App\Model\OrderDetail::all();
+	foreach ($attr as $key => $value) {
+	 	$arr = App\Model\Product::find($value->product_id)->image_stores()->orderBy('product_images.position', "asc")->first();
+	 	pr($arr->id);
+	 	$value->update(['image_store_id' => $arr->id]);
+	} 
+   
+	pr(\DB::getQueryLog());
+});
 
-
-pr(\DB::getQueryLog());
+Route::get('test99', function (){
+	\DB::enableQueryLog();
+	$attr = App\Model\ImageStore::all();
+	foreach ($attr as $key => $value) {
+	 	$temp = explode(".", $value->name);
+		$value->update(['alt' => str_replace(".".end($temp), "", $value->name)]);
+	}  
+	pr(\DB::getQueryLog());
 });
 
 

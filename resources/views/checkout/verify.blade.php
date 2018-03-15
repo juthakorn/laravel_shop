@@ -124,7 +124,7 @@ $address = $order->address;
                                 <?php 
                                 $arrimg = $product->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                                 if(!empty($arrimg)){ ?>                                
-                                    <img class="media-object img-thumbnail" src="<?= url(ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350']))?>" alt="<?=$arrimg[0]['alt']?>" style="width: 70px">
+                                    <img class="media-object img-thumbnail" src="<?= url(ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350']))?>" style="width: 70px">
                                 <?php }else{ ?>
                                     <img class="media-object img-thumbnail" src="{{ URL::asset('image/nopicture.png') }}" style="width: 70px">
                                 <?php }
@@ -200,7 +200,7 @@ $address = $order->address;
                                 <?php 
                                 $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                                 if(!empty($arrimg)){ ?>                                
-                                    <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>"  alt="<?=$arrimg[0]['alt']?>" >
+                                    <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>" >
                                 <?php }else{ ?>
                                     <img src="{{ URL::asset('image/nopicture.png') }}" >
                                 <?php }

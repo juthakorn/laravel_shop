@@ -12,19 +12,25 @@
             $image_product_arr = $image_products->toArray();
             ?>
             <div class="image-detail">
-                <?php if(!empty($image_product_arr[0])){?>  
-                <img src="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name'])?>" data-zoom-image="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name'])?>" alt="<?=$image_product_arr[0]['alt']?>">
+                <?php if(!empty($image_product_arr[0]) && file_exists(str_replace(url("/")."/", "", ImgProduct($image_product_arr[0]['id'],  $image_product_arr[0]['new_name'])))){?>  
+                <img src="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name'])?>" data-zoom-image="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name'])?>" >
                 <?php }else{ ?>
-                <img src="<?= ImgNoProduct()?>" data-zoom-image="<?= ImgNoProduct()?>" alt="ไม่มีรูปภาพสินค้า">
+                <img src="<?= ImgNoProduct()?>" data-zoom-image="<?= ImgNoProduct()?>" title="ไม่มีรูปภาพสินค้า">
                 <?php } ?>                
             </div>
             <div class="products-slider-detail m-b-2">                
                 <?php if(!$image_products->isEmpty()){ 
                     foreach ($image_products as $key => $image_product) { ?>
-                    <a href="#"><img src="<?= ImgProduct($image_product->id, $image_product->new_name)?>" data-zoom-image="<?= ImgProduct($image_product->id, $image_product->new_name)?>" alt="<?=$image_product->alt;?>" class="img-thumbnail"></a>
+                        <?php if(file_exists(str_replace(url("/")."/", "", ImgProduct($image_product->id, $image_product->new_name)))){?>  
+
+                    <a href="#"><img src="<?= ImgProduct($image_product->id, $image_product->new_name)?>" data-zoom-image="<?= ImgProduct($image_product->id, $image_product->new_name)?>" class="img-thumbnail"></a>
+
+                        <?php }else{ ?>
+                     <a href="#"><img src="<?=ImgNoProduct(); ?>" data-zoom-image="<?=ImgNoProduct(); ?>" title="ไม่มีรูปภาพสินค้า" class="img-thumbnail"></a>
+                        <?php } ?>
                     <?php } ?>
                 <?php }else{ ?>
-                     <a href="#"><img src="<?=ImgNoProduct(); ?>" data-zoom-image="<?=ImgNoProduct(); ?>" alt="ไม่มีรูปภาพสินค้า" class="img-thumbnail"></a>
+                     <a href="#"><img src="<?=ImgNoProduct(); ?>" data-zoom-image="<?=ImgNoProduct(); ?>" title="ไม่มีรูปภาพสินค้า" class="img-thumbnail"></a>
                 <?php } ?> 
             </div>
             <div class="title"><span>Share to</span></div>
@@ -105,7 +111,7 @@
                                     <?php 
                                     $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                                     if(!empty($arrimg)){ ?>                                
-                                        <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>"  alt="<?=$arrimg[0]['alt']?>" >
+                                        <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>" >
                                     <?php }else{ ?>
                                         <img src="{{ URL::asset('image/nopicture.png') }}" >
                                     <?php }
@@ -270,7 +276,7 @@
                                 <?php 
                                 $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
                                 if(!empty($arrimg)){ ?>                                
-                                    <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>"  alt="<?=$arrimg[0]['alt']?>" >
+                                    <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350'])?>"  >
                                 <?php }else{ ?>
                                     <img src="{{ URL::asset('image/nopicture.png') }}" >
                                 <?php }
@@ -316,9 +322,9 @@
         <div class="row">
             <div class="col-xs-3"> 
                 <?php if(!empty($image_product_arr[0])){?>  
-                <img src="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name150'])?>" class="item-add-cart" alt="<?=$image_product_arr[0]['alt']?>">
+                <img src="<?= ImgProduct($image_product_arr[0]['id'], $image_product_arr[0]['new_name150'])?>" class="item-add-cart" >
                 <?php }else{ ?>
-                <img src="<?= ImgNoProduct()?>" data-zoom-image="<?= ImgNoProduct()?>" alt="ไม่มีรูปภาพสินค้า" class="item-add-cart">
+                <img src="<?= ImgNoProduct()?>" data-zoom-image="<?= ImgNoProduct()?>"  class="item-add-cart">
                 <?php } ?>
             </div> 
             <div class="col-xs-9"> 

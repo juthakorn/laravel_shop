@@ -11,7 +11,7 @@
                 <?php foreach ($blogs as $key => $blog) { ?>  
                     <div class="col-md-6">
                         <div class="thumbnail blog-list">
-                            <a href="{{ url(UrlArticleShow($blog->id,$blog->blog_name))}}"><img src="<?= !empty($blog->image_logo->id) ? ImgProduct($blog->image_logo->id, $blog->image_logo->new_name) : "/image/nopicture.png" ?>" alt=""></a>
+                            <a href="{{ url(UrlArticleShow($blog->id,$blog->blog_name))}}"><img src="<?= !empty($blog->image_logo->id) ? ImgProduct($blog->image_logo->id, $blog->image_logo->new_name) : "/image/nopicture.png" ?>" ></a>
                             <div class="caption">
                                 <h4>{{ $blog->blog_name }}</h4>
                                 <small>

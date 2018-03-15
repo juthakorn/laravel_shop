@@ -44,7 +44,7 @@
 
                                         <?php $product = App\Model\Product::find($keytmp);  ?>
                                         <?php if($product != null) {?>
-                                        <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}">
+                                        <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}" style="text-decoration: none;" title="{{ $valuetmp[0]->p_name }}">
                                             <?php                                           
 
                                             if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
@@ -57,9 +57,9 @@
                                        
                                             <?php 
                                             if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
-                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
                                             <?php }else{ ?>
-                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
                                             <?php } ?>                                        
                                         <?php } 
 

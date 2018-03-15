@@ -104,11 +104,16 @@
                     
                 </ul>
             </li>
-            <li>
+            <li class="{{ Request::is('admin/image') ? "active" : "" }}">
+                <a href="{{ url('/admin/image') }}">
+                    <i class="fa fa-fw fa-file-image-o"></i> <span>คลังรูปภาพ</span>            
+                </a>
+            </li>
+            <li class="{{ Request::is('admin/profile') ? "active" : "" }}">
                 <a href="{{ url('/admin/profile') }}">
                     <i class="fa fa-fw fa-gears"></i> <span>ข้อมูลร้านค้า</span>            
                 </a>
-            </li>
+            </li>            
             <li>
                 <a href="#">
                     <i class="fa fa-calendar"></i> <span>xxxxxxxxxx</span>            

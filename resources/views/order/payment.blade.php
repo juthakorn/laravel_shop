@@ -62,7 +62,7 @@
                                         
                                         <td class="img-cart">
                                             <label for="bank{{ $key }}" class="label-bank">
-                                            <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank->bank_name)) ?>" alt="<?= $bank->bank_name ?>" style="border-radius: 32px;width: 40px;" >   
+                                            <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank->bank_name)) ?>" title="<?= $bank->bank_name ?>" style="border-radius: 32px;width: 40px;" >   
                                             </label>
                                         </td>
                                         <td><label for="bank{{ $key }}" class="label-bank">{{ str_replace("ธนาคาร", "ธ.", $bank->bank_name) }}</label></td>

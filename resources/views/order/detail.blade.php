@@ -136,7 +136,7 @@
                                     <td>
                                         
                                         <?php $bank = unserialize($value->bank_info); ?>                                        
-                                        <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" alt="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
+                                        <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" title="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
                                         <div style="float: left;margin-left: 10px;text-align: left;"><p style="margin-bottom: 0">{{ $bank['bank_name'] }}</p><p style="margin-bottom: 0">{{ $bank['bank_number'] }}</p></div>
 
                                     </td>

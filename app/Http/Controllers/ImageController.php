@@ -23,8 +23,10 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('product.test');
+    {       
+        
+        $return['Album']=DB::table('albums')->select('id','album_name')->get(); 
+        return view('image.index', $return);
     }
 
     /**
@@ -116,6 +118,8 @@ class ImageController extends Controller
             $new_name150 = $rand."150px.".$photo->getClientOriginalExtension();
             $new_name350 = $rand."350px.".$photo->getClientOriginalExtension();
             
+            $temp = explode(".", $request->file('file')->getClientoriginalName());
+
             $arrImage = [
                 'new_name' => $new_name,
                 'new_name150' => $new_name150,
@@ -123,6 +127,7 @@ class ImageController extends Controller
                 'name' => $request->file('file')->getClientoriginalName(),
                 'size' => filesize_format($request->file('file')->getClientsize()),
                 'album_id' => $request['album_id'],
+                'alt' => str_replace(".".end($temp), "", $request->file('file')->getClientoriginalName()),
             ];
             //    
 //            pr(ImageStore::all());
@@ -172,6 +177,7 @@ class ImageController extends Controller
 //
         
     }
+    
     public function removeimg()
     {
 //        prx($_POST['data']['filename']);
@@ -188,9 +194,19 @@ class ImageController extends Controller
 //        pr($request->all());
 //       prx($album_id);
 
-        $images=DB::table('image_stores')->where('album_id','=',$album_id)->paginate(12);
+        $images=DB::table('image_stores')->where('album_id','=',$album_id)->orderBy('id', 'desc')->paginate(48);
        
         
         return view('product.load_image',['images'=>$images]);
+    }
+
+    public function load_album_image($album_id,Request $request) {
+//        pr($request->all());
+//       prx($album_id);
+
+        $images=DB::table('image_stores')->where('album_id','=',$album_id)->orderBy('id', 'desc')->paginate(48);
+       
+        
+        return view('image.load_image',['images'=>$images]);
     }
 }
