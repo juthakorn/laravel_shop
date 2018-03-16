@@ -214,6 +214,15 @@ jQuery(document).ready(function () {
 
 function RemoveImg(id){
     console.log(id);
+    $.ajax({
+     url: "{{ url("admin/image") }}/" + id,
+        method: "POST",
+        dataType:'json',
+        data: {'data':id,'_method': 'DELETE','_token':$('form#my-dropzone input[name="_token"]').val() },
+        success: function(response) {
+
+        }
+    });
 }
 </script>
 @endsection

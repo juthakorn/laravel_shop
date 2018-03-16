@@ -92,7 +92,13 @@ class ImageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ( ! empty($id))
+        {
+            //$arr = explode("/", $_POST['data']['filename']);
+            //folder_delete($this->upload_dir . '/'. $arr[0]);
+            //ImageStore::destroy($arr[0]);
+           echo $id;
+        }
     }
     
     public function save_album(Request $request) {
@@ -177,7 +183,7 @@ class ImageController extends Controller
 //
         
     }
-    
+
     public function removeimg()
     {
 //        prx($_POST['data']['filename']);
@@ -209,4 +215,5 @@ class ImageController extends Controller
         
         return view('image.load_image',['images'=>$images]);
     }
+
 }

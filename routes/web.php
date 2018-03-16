@@ -136,7 +136,6 @@ Route::post('admin/image/save_album', 'ImageController@save_album');
 Route::get('admin/image/load_album/{id}', 'ImageController@load_album');
 Route::get('admin/image/load_album_image/{id}', 'ImageController@load_album_image');
 Route::resource('admin/image', 'ImageController');
-
 //admin order
 Route::any('admin/order/', 'OrderAdminController@index');
 Route::get('admin/order/detail/{id}', 'OrderAdminController@detail');  

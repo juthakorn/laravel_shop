@@ -319,6 +319,39 @@ table tr.vertical-middle td {
 .timeline-inverse > li > .timeline-item > .timeline-header {
   border-bottom-color: #ddd;
 }
+.storeimg .dz-details i{
+  font-size: 22px;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -10px;
+    opacity: 0;
+    margin-top: -11px;
+    -webkit-transform: scale(.75);
+    transform: scale(.75);
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.storeimg .dz-details:hover i{ 
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+.storeimg .dz-details img{
+  opacity: 1;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+.storeimg .dz-details:hover img{
+  opacity: 0.5;
+}
 
 @media (min-width: 992px){
 .modal-lg {
