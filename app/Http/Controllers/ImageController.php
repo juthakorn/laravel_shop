@@ -139,7 +139,9 @@ class ImageController extends Controller
 //            pr(ImageStore::all());
             $ImageStore = ImageStore::create($arrImage);     
             
-            mkdir($this->upload_dir.'/'.$ImageStore->id, 0777, true);
+            if(!is_dir($this->upload_dir.'/'.$ImageStore->id)){
+                mkdir($this->upload_dir.'/'.$ImageStore->id, 0777, true);
+            }
             //resize
             
             
