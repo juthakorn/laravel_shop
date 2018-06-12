@@ -220,7 +220,12 @@ function RemoveImg(id){
         dataType:'json',
         data: {'data':id,'_method': 'DELETE','_token':$('form#my-dropzone input[name="_token"]').val() },
         success: function(response) {
-
+            if(response.status === "success"){
+                $('#image_id_' + response.id).remove();
+            }else{
+                alert(response.txt_error);
+            }
+            
         }
     });
 }
