@@ -17,7 +17,7 @@
                         <img src="{{ ImgNoProduct() }}" alt="">       
                         <i class="glyphicon glyphicon-search"></i>                      
                     </a>
-                <?php } ?>
+                <?php } ?> 
 
                
 
