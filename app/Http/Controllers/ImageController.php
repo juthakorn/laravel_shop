@@ -94,10 +94,50 @@ class ImageController extends Controller
     {
         if ( ! empty($id))
         {
-            //$arr = explode("/", $_POST['data']['filename']);
-            //folder_delete($this->upload_dir . '/'. $arr[0]);
-            //ImageStore::destroy($arr[0]);
-           echo $id;
+
+            //echo $id;
+            $txt_error = "";
+            if(empty($txt_error)){
+                $AddressShop = \App\Model\AddressShop::where('image_store_id',$id)->take(1)->get();            
+                if(!$AddressShop->isEmpty()){
+                    $txt_error = "รูปนี้มีเชื่อมกับข้อมูลร้านค้าค่ะ";
+                }
+            }
+            if(empty($txt_error)){
+                $Blog = \App\Model\Blog::where('image_store_id',$id)->take(1)->get();            
+                if(!$Blog->isEmpty()){
+                    $txt_error = "รูปนี้มีเชื่อมกับบทความค่ะ";
+                }
+            }
+            if(empty($txt_error)){
+                $Category = \App\Model\Category::where('image_store_id',$id)->take(1)->get();            
+                if(!$Category->isEmpty()){
+                    $txt_error = "รูปนี้มีเชื่อมกับข้อมูลหมวดหมู่สินค้าค่ะ";
+                }
+            }
+            if(empty($txt_error)){
+                $OrderDetail = \App\Model\OrderDetail::where('image_store_id',$id)->take(1)->get();            
+                if(!$OrderDetail->isEmpty()){
+                    $txt_error = "รูปนี้มีเชื่อมกับข้อมูลรายการสั่งซื้อค่ะ";
+                }
+            }
+            if(empty($txt_error)){
+                $ProductImage = \App\Model\ProductImage::where('image_store_id',$id)->take(1)->get();            
+                if(!$ProductImage->isEmpty()){
+                    $txt_error = "รูปนี้มีเชื่อมกับข้อมูลสินค้าค่ะ";
+                }
+            }
+            
+            if(empty($txt_error)){
+                folder_delete($this->upload_dir . '/'. $id);
+                ImageStore::destroy($id);
+            }
+            return response()->json([
+                'id' => $id, 
+                'status' => !empty($txt_error) ? "error" : "success",
+//                'status' => 'success'
+                'txt_error' => $txt_error
+            ]);
         }
     }
     
