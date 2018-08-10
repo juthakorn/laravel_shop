@@ -13,13 +13,13 @@ $address = $order->address;
         <div class="wrapstep">
             <ul class="step-li">
                 <li class="cart-li">
-                     <i class="fa fa-shopping-cart"></i> 
-                     <a href="{{ url(UrlCheckoutCart()) }}"><span>{{ trans('cart.Shopping Cart') }}</span></a>
+                     
+                     <a href="{{ url(UrlCheckoutCart()) }}"><i class="fa fa-shopping-cart"></i> <span>{{ trans('cart.Shopping Cart') }}</span></a>
                      <div class="icon-step-circle"><i class="glyphicon glyphicon-chevron-right"></i></div>
                 </li>
                 <li class="cart-li">
-                     <i class="fa fa-truck"></i> 
-                     <a href="{{ url(UrlCheckoutAddress()) }}"><span>{{ trans('cart.Shipping Address') }}</span></a>
+                     
+                     <a href="{{ url(UrlCheckoutAddress()) }}"><i class="fa fa-truck"></i> <span>{{ trans('cart.Shipping Address') }}</span></a>
                      <div class="icon-step-circle"><i class="glyphicon glyphicon-chevron-right"></i></div>
                 </li>               
                 <li class="cart-li">
@@ -50,12 +50,12 @@ $address = $order->address;
                     <a href="{{ url(UrlCheckoutAddress()) }}"  class="btn btn-theme"><i class="fa fa-pencil"></i> {{ trans('cart.Change address') }}</a>
                 </div>
             </div>            
-            <div class="row"> 
+            <div class="row888"> 
                  <?php
                     $temp_address = check_province($address->province);
                     ?>
                 <div class="form-horizontal" >                
-                    <div class="row">
+                    <div class="row888">
                         <div class="form-group col-sm-12">
                             <label class="col-sm-4 control-label">{{ trans('user.First Name')."-".trans('user.Last Name') }}</label>
                             <div class="col-sm-8"> 
