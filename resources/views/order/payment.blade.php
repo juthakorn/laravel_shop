@@ -167,7 +167,7 @@
                         </div>   
                     
                     </div>
-                    <div class="row" style="margin-bottom: 35px;">
+                    <div style="margin-bottom: 35px;">
                         <div class="text-center">
                             <button type="submit" class="btn btn-theme">{{ trans('cart.Payment') }}</button>
                             <button type="reset" class="btn btn-default">{{ trans('common.cancel') }}</button>                          

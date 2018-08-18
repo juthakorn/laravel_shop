@@ -11,8 +11,8 @@ $cal = cal_price($order);
         <div class="wrapstep">
             <ul class="step-li">
                 <li class="cart-li">
-                     <i class="fa fa-shopping-cart"></i> 
-                     <a href="{{ url(UrlCheckoutCart()) }}"><span>{{ trans('cart.Shopping Cart') }}</span></a>
+                     
+                     <a href="{{ url(UrlCheckoutCart()) }}"><i class="fa fa-shopping-cart"></i> <span>{{ trans('cart.Shopping Cart') }}</span></a>
                      <div class="icon-step-circle"><i class="glyphicon glyphicon-chevron-right"></i></div>
                 </li>
                 <li class="cart-li">

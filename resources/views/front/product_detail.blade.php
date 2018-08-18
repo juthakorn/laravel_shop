@@ -130,7 +130,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-        <div class="row">
+        <div class="">
         <div class="col-md-12">
 
             <!-- Nav tabs -->

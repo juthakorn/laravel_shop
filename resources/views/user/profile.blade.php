@@ -17,7 +17,7 @@
             
             <div class="form-horizontal" id="form-show-user">
                 
-                <div class="row">
+                <div class="">
                     <div class="form-group col-sm-6">
                         <label  class="col-sm-4 control-label">{{ trans('user.First Name') }}</label>
                         <div class="col-sm-8"> 
@@ -31,7 +31,7 @@
                         </div>
                     </div>                     
                 </div>                
-                <div class="row">
+                <div class="">
                     <div class="form-group col-sm-6">
                         <label  class="col-sm-4 control-label">{{ trans('user.Sex') }}</label>
                         <div class="col-sm-8"> 
@@ -53,7 +53,7 @@
                         </div>
                     </div>                     
                 </div>
-                <div class="row">
+                <div class="">
                     <div class="form-group col-sm-6">
                         <label  class="col-sm-4 control-label">{{ trans('common.Email address') }}</label>
                         <div class="col-sm-8"> 
@@ -67,7 +67,7 @@
                         </div>
                     </div>                     
                 </div>
-                <div class="row">
+                <div class="">
                     <a href="javascript:void(0)" id="show-form-user" onclick="$('#form-edit-user').show();$('#form-show-user').hide();return false;"  class="btn btn-theme pull-right"><i class="fa fa-pencil"></i> {{ trans('user.Edit My Profile') }}</a>
                 </div>
                 
@@ -76,7 +76,7 @@
             
             <div class="form-horizontal" id="form-edit-user" style="display: none">   
                 {!! Form::model($user, ['route' => ['user.update'], 'method' => 'POST', 'files' => true, 'id'=>'frmuser']) !!}
-                <div class="row">
+                <div class="">
                     <div class="form-group col-sm-6">
                         <label  class="col-sm-4 control-label required_field">{{ trans('user.First Name') }}</label>
                         <div class="col-sm-8">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row">
+                 <div class="">
                     <div class="form-group col-sm-6">
                         <label for="p_name" class="col-sm-4 control-label">{{ trans('user.Sex') }}</label>
                         <div class="col-sm-8">
@@ -122,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="">
                     <div class="form-group col-sm-6">
                         <label  class="col-sm-4 control-label required_field">{{ trans('common.Email address') }}</label>
                         <div class="col-sm-8"> 
@@ -136,7 +136,7 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row">
+                 <div class="">
                     <div class="text-center">
                        <button type="submit" class="btn btn-theme">{{ trans('common.save') }}</button>
                        <a href="{{ url(customer()) }}" class="btn btn-default load-form">{{ trans('common.cancel') }}</a>
