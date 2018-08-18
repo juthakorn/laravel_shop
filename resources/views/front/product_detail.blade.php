@@ -146,55 +146,57 @@
                 <!-- Description Tab Content -->
                 <div role="tabpanel" class="tab-pane active p_detail" id="datail">
                     <div class="well">
-                        
-                        <div class="table-responsive">
-                        <table class="table table-bordered">
-                            <tbody>                                
-                                <tr>
-                                    <td align="right">
-                                        <strong>เนื้อผ้า</strong>
-                                    </td>
-                                    <td>คอตตอน</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>ลักษณะผ้า</strong>
-                                    </td>
-                                    <td>ผ้ายืด นุ่ม ใส่สบาย</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>สี</strong></td>
-                                    <td>แดงเลือดหมู</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>ลวดลาย</strong>
-                                    </td>
-                                    <td>สกรีนข้อความสีทองเป็นรูปหัวใจ</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>ทรง</strong>
-                                    </td>
-                                    <td>ทรงตรง/เดรส</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>สไตล์</strong>
-                                    </td>
-                                    <td>แฟชั่น</td>
-                                </tr>
-                                <tr>
-                                    <td align="right">
-                                        <strong>ข้อแนะนำ</strong>
-                                    </td>
-                                    <td>ไม่ควรใช้น้ำยาฟอกขาวในการซัก ควรเปิดระบบปั่นแบบถนอมผ้าหรือซักด้วยมือ</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </div>    
                         <?=$product->p_detail ?>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>                                
+                                    <tr>
+                                        <td align="right">
+                                            <strong>เนื้อผ้า</strong>
+                                        </td>
+                                        <td>คอตตอน</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>ลักษณะผ้า</strong>
+                                        </td>
+                                        <td>ผ้ายืด นุ่ม ใส่สบาย</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>สี</strong></td>
+                                        <td>แดงเลือดหมู</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>ลวดลาย</strong>
+                                        </td>
+                                        <td>สกรีนข้อความสีทองเป็นรูปหัวใจ</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>ทรง</strong>
+                                        </td>
+                                        <td>ทรงตรง/เดรส</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>สไตล์</strong>
+                                        </td>
+                                        <td>แฟชั่น</td>
+                                    </tr>
+                                    <tr>
+                                        <td align="right">
+                                            <strong>ข้อแนะนำ</strong>
+                                        </td>
+                                        <td>ไม่ควรใช้น้ำยาฟอกขาวในการซัก ควรเปิดระบบปั่นแบบถนอมผ้าหรือซักด้วยมือ</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>  
+                        
+                        <?= empty($product->size->detail) ? "" : $product->size->detail ?>
+                        
                     </div>
                 </div>
                 <!-- End Description Tab Content -->

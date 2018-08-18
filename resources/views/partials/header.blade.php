@@ -32,8 +32,8 @@
                         </div>
                       </li>
                     @else                    
-                        <li class="hidden-xs"><a href="{{ url(register()) }}"><i class="fa fa-edit"></i> {{ trans('common.register') }}</a></li>
-                        <li class="hidden-xs"><a href="{{ url(login()) }}"><i class="fa fa-sign-in"></i> {{ trans('common.login') }}</a></li>
+                        <li><a href="{{ url(register()) }}"><i class="fa fa-edit"></i> {{ trans('common.register') }}</a></li>
+                        <li><a href="{{ url(login()) }}"><i class="fa fa-sign-in"></i> {{ trans('common.login') }}</a></li>
                     @endif 
                 </ul>
             </div>

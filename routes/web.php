@@ -110,6 +110,9 @@ Route::group(['middleware' => ['auth']], function () {
 Route::resource('admin/bank', 'BankController', [
 	'except' => ['show']
 ]);
+Route::resource('admin/size', 'SizeController', [
+	'except' => ['show']
+]);
 Route::resource('admin/code_discount', 'CodeDiscountController', [
 	'except' => ['show']
 ]);

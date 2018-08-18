@@ -24,12 +24,18 @@ class Product extends Model
         'seo_keyword',
         'seo_description',
         'p_tags',
-        'slug_url'
+        'slug_url',
+        'size_id'
     ];
     
     public function category_product()
     {
         return $this->hasOne('App\Model\Category','id', 'category_id');
+    }
+    
+    public function size()
+    {
+        return $this->hasOne(Size::class, 'id', 'size_id');
     }
     
     public function product_images()

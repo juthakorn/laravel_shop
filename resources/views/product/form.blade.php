@@ -156,7 +156,13 @@
             <div class="box-header with-border">
                 <h3 class="box-title" ><i class="glyphicon glyphicon-eye-open"></i> รายละเอียดอื่นๆ</h3>
             </div>
-            <div class="box-body">                        
+            <div class="box-body">        
+                <div class="form-group">
+                    <label for="type_product_id" class="col-sm-3 control-label">รายละเอียดไซส์</label>
+                    <div class="col-sm-9">
+                        {!! Form::select('size_id', $size, null, ['class' => 'form-control']) !!}                                 
+                    </div>
+                </div>                 
                 <div class="form-group">                            
                     <label for="p_detail" class="control-label">รายละเอียดสินค้า</label>
                     {!! Form::textarea('p_detail', null, ['class'=>'tinymce','id'=>'p_detail']) !!}                            

@@ -44,7 +44,7 @@
                     <li><a href="editors.html"><i class="fa fa-circle-o"></i>รายการสั่งซื้อสำเร็จ</a></li>                    
                 </ul>
             </li>
-            <li class="treeview {{ Request::segment(2) == "category" || Request::segment(2) == "type_product" || Request::segment(2) == "product" ? "active" : "" }}">
+            <li class="treeview {{ Request::segment(2) == "category" || Request::segment(2) == "size" || Request::segment(2) == "product" ? "active" : "" }}">
                 <a href="#">
                     <i class="fa fa-tags"></i> <span>สินค้า</span>
                     <span class="pull-right-container">
@@ -58,6 +58,7 @@
                     <li class="{{ Request::is('admin/category/create') ? "active" : "" }}"><a href="{{ url('/admin/category/create') }}"><i class="fa fa-circle-o"></i>เพิ่มหมวดหมู่สินค้า</a></li>
                     <li class="{{ Request::is('admin/product') ? "active" : "" }}"><a href="{{ url('/admin/product') }}" ><i class="fa fa-circle-o"></i>จัดการสินค้า</a></li>
                     <li class="{{ Request::is('admin/product/create') ? "active" : "" }}"><a href="{{ url('/admin/product/create') }}"><i class="fa fa-circle-o"></i>เพิ่มสินค้า</a></li>
+                    <li class="{{ Request::is('admin/size') ? "active" : "" }}"><a href="{{ url('/admin/size') }}"><i class="fa fa-circle-o"></i>จัดการรายละเอียดไซส์</a></li>
                 </ul>
                 
                 
@@ -114,11 +115,11 @@
                     <i class="fa fa-fw fa-gears"></i> <span>ข้อมูลร้านค้า</span>            
                 </a>
             </li>            
-            <li>
+<!--            <li>
                 <a href="#">
                     <i class="fa fa-calendar"></i> <span>xxxxxxxxxx</span>            
                 </a>
-            </li>
+            </li>-->
 
         </ul>
     </section>

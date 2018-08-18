@@ -10,6 +10,7 @@ use App\Model\Product;
 use App\Model\ProductImage;
 use App\Model\ProductAttribute;
 use App\Model\Category;
+use App\Model\Size;
 
 class ProductController extends Controller
 {
@@ -62,6 +63,7 @@ class ProductController extends Controller
         $return['Album']=$Album;
         //set default value
         $return['product'] = ['p_active'=>1, 'p_new'=>1];
+        $return['size'] = Size::pluck('name', 'id')->prepend('--- Please Select ---','');
         return view('product.create',$return);
     }
 
@@ -164,6 +166,7 @@ class ProductController extends Controller
         $return['categorys']=$arr_cat;
         $return['Album']=$Album;
         $return['product'] = Product::findOrFail($id);
+        $return['size'] = Size::pluck('name', 'id')->prepend('--- Please Select ---','');
         return view('product.edit', $return);
     }
 
