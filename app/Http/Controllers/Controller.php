@@ -91,6 +91,10 @@ class Controller extends BaseController
         "อุทัยธานี" => "อุทัยธานี",
         "อุบลราชธานี" => "อุบลราชธานี");
     
+    public function __construct()
+    {
+        \DB::enableQueryLog();
+    }
     
     function get_group_product($param) {        
         $return = NULL;

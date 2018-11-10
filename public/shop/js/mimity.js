@@ -82,7 +82,7 @@ if ($('.widget-slider-left').exist()) {
       navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
       responsive:{
         0:{
-          items:1,
+          items:2,
         },
         480:{
           items:2,
@@ -133,7 +133,7 @@ if ($('.widget-slider-left').exist()) {
       navText:['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
       responsive:{
           0:{
-            items:1,
+            items:2,
           },
           480:{
             items:2,

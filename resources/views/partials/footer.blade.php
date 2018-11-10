@@ -33,7 +33,7 @@ $addressShop = App\Model\AddressShop::findOrFail(1); //fix
                     <li><i class="fa fa-angle-double-right"></i> <a href="{{ url(UrlproductNew()) }}">{{ trans('common.New Products') }}</a></li>
                     <li><i class="fa fa-angle-double-right"></i> <a href="{{ url(UrlproductRecommend()) }}">{{ trans('common.Recommended Products') }}</a></li>
                     <?php
-                    $category = App\Model\Category::where([['active', '=', '1'] , ['parent_id', '=', '0']])->select('id', 'cat_name')->orderBy('position', 'asc')->get();
+                    $category = App\Model\Category::where([['active', '=', '1'] , ['parent_id', '=', '0']])->select('id', 'cat_name')->with('SubCategory')->orderBy('position', 'asc')->get();
                     foreach ($category as $key => $value) {
                         ?>
                         <li><i class="fa fa-angle-double-right"></i> <a href="{{ url(UrlCategoryProduct($value->id, $value->cat_name)) }}">{{ $value->cat_name }}</a></li>

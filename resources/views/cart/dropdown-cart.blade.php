@@ -18,7 +18,7 @@ $sum = 0;
 
 if(!empty($data)){
     foreach ($data as $key => $value) {
-        $product_attr = App\Model\ProductAttribute::find($value['attr_id']);       
+        $product_attr = App\Model\ProductAttribute::with('product')->find($value['attr_id']);       
         if(empty($product_attr)){
             continue;
         }

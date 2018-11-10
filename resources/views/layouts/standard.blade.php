@@ -30,7 +30,7 @@
     <![endif]-->
   </head>
   <body>
-
+<?php \DB::enableQueryLog();?>
     <!-- Top Header -->
     @include("partials.header")    
     <!-- End Top Header -->
@@ -74,7 +74,7 @@
     <!-- Footer -->
     @include("partials.footer")
     <!-- End Footer -->
-
+<?php //pr(\DB::getQueryLog());?>
     <a href="#top" class="back-top text-center" onclick="$('body,html').animate({scrollTop:0},500); return false">
       <i class="fa fa-angle-double-up"></i>
     </a>

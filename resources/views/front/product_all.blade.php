@@ -15,7 +15,7 @@
         </div>
         <!-- My Profile Content -->
         <div class="col-sm-9 ">
-            <div class="title" ><span>{{ trans('cart.Payment') }} </span></div>
+            <div class="title" ><span>{{ trans('cart.Product') }} </span></div>
 
                           
 
@@ -39,17 +39,18 @@
             <!-- End Product Sorting Bar -->
             
             
-            <?php foreach ($products as $key => $value) { ?>
-                <?= $key%4 == 0 ? "<div class=\"clearfix\"></div>" : "" ?>
-                <div class="col-sm-4 col-md-3 box-product-outer nohover" style="margin-bottom: 15px;padding: 0">
+            <?php foreach ($products as $key => $value) { //pr($value->toArray());?>
+                <?php //= $key%4 == 0 ? "<div class=\"clearfix\"></div>" : "" ?>
+                <div class="col-sm-4 col-md-3 col-xs-6 box-product-outer nohover" style="margin-bottom: 15px;padding: 0">
                     <div class="box-product have-border">
                         <div class="img-wrapper">
                             <a href="<?= UrlProduct($value->id, $value->slug_url) ?>">
                               <?php
-                              $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
-                              if (!empty($arrimg)) {
+                              //pr($value->image_stores->toArray());
+                              //$arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
+                              if (!$value->image_stores->isEmpty()) {
                                   ?>                                
-                                  <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name350']) ?>" >
+                                  <img src="<?= ImgProduct($value->image_stores[0]->id, $value->image_stores[0]->new_name350) ?>" >
                               <?php } else { ?>
                                   <img src="{{ URL::asset('image/nopicture.png') }}" >
                               <?php }

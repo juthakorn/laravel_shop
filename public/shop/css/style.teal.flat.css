@@ -866,10 +866,14 @@ input[type=radio]:checked + span::before {
   color: #ef5350;
 }
 .box-product h6 a {
-  font-size: 14px;
-  line-height: 1.4;
-  display: block;
-  font-weight: bold;
+    font-size: 14px;
+    line-height: 1.4;
+    display: block;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 0 6px;
 }
 .box-product:hover .img-wrapper > .option {
   bottom: 0;

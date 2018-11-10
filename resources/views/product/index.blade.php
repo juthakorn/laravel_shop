@@ -52,18 +52,12 @@
                                         <tr class="text-center">
                                             <td>
                                                 <?php 
-                                                $arrimg = $value->image_stores()->orderBy('product_images.position', "asc")->take(1)->get()->toArray();
-                                    
-                                                if(!empty($arrimg)){?>
-                                                
-                                                    <img src="<?= ImgProduct($arrimg[0]['id'], $arrimg[0]['new_name150'])?>" style="height:50px;width: auto;">
-                                                
-                                                <?php }else{ ?>
-                                                    <img src="/image/nopicture.png" style="height:50px;width: auto;"/>
-                                                <?php }                                                  
-//                                                foreach ($value->image_stores as $key_img => $value_img) {
-//                                                    echo $value_img->new_name150;
-//                                                }
+                                                if (!$value->image_stores->isEmpty()) {
+                                                    ?>                                
+                                                    <img src="<?= ImgProduct($value->image_stores[0]->id, $value->image_stores[0]->new_name350) ?>" style="height:50px;width: auto;">
+                                                <?php } else { ?>
+                                                    <img src="{{ URL::asset('image/nopicture.png') }}" style="height:50px;width: auto;">
+                                                <?php }  
                                                 ?>
                                                 
                                             </td>

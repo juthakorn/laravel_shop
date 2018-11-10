@@ -37,7 +37,7 @@ class BlogController extends Controller
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('common.Article') ],
         ];
-        $teturn['blogs'] = Blog::orderBy('id', 'desc')
+        $teturn['blogs'] = Blog::orderBy('id', 'desc')->with('image_logo')
                 ->paginate(6);
         return view('blog.front_index',$teturn);
     }

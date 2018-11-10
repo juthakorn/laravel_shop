@@ -779,10 +779,28 @@ table tr.vertical-middle td{vertical-align: middle}
 .nohover:hover{
     border: none
 }
-
+.category-left .hidden-desktop {
+    display: none;  cursor: pointer  
+} 
+@media (max-width: 767px) {
+    .category-left{
+        margin-bottom: 30px
+    }
+  .category-left .hidden-desktop {
+    display: block;
+  }
+  .category-left ul.list-group  {
+    display: none;
+  }
+  .category-left ul.list-group.open  {
+    /*display: block;*/
+  }
+}
 @media (min-width: 768px) {
-    .modal-cart{width: 400px}
-    
+    .modal-cart{width: 400px}    
+    .category-left ul.list-group  {
+        display: block !important;
+    }
 }
 @media (max-width: 991px) {
 .related-slider {

@@ -41,6 +41,9 @@ class ProductController extends Controller
                         $query->orWhere("p_detail", 'LIKE', $keywords);
                     }
                 })
+                ->with(['image_stores' => function($query){
+                    $query->orderBy('product_images.position', "asc");//->first();
+                }])
                 ->orderBy('id', 'desc')
                 ->paginate(10);
         return view('product.index',$data);
@@ -237,6 +240,9 @@ class ProductController extends Controller
             }
 //             DB::table('product_images')->insert($data_image);   //ใช้ save ของ array 1
             
+        }else{
+            $product->image_stores()->delete();
+//            DB::table('product_images')->whereIn('id', $arr_del_img)->delete();
         }
          //-------------------- manger image ----------------- End
         

@@ -20,10 +20,15 @@ class FrontController extends Controller
     }
     
     public function product_all() {
+        
+//        \DB::enableQueryLog();
         $products = Product::where('p_active' , 1)
+                ->with(['image_stores' => function($query){
+                    $query->orderBy('product_images.position', "asc");//->first();
+                }])
             ->orderBy('id', 'desc')
             ->paginate(20);
-        
+//        pr(\DB::getQueryLog());
         return view('front.product_all',compact('products'));
     }
     

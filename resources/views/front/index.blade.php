@@ -66,7 +66,7 @@
         <div class="clearfix visible-sm visible-xs"></div>
 
         <div class="col-md-9">
-
+            <h1 style=" color: red">อ่านนะต้อม หน้านี้ จะเอาจาก ประเภทสินค้า มาแสดง แต่ละ navbar</h1>
             <!-- Featured -->
             <div class="title"><span>{{ trans('common.Best Seller') }}</span></div>
             <div class="product-slider owl-controls-top-offset">

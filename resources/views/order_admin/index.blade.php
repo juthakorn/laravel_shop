@@ -122,8 +122,12 @@
                                         <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}" style="text-decoration: none;" title="{{ $valuetmp[0]->p_name }}">
                                             <?php                                           
 
-                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
-                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct(@$valuetmp[0]->image_store->id, @$valuetmp[0]->image_store->new_name150)))){ 
+                                                if(!empty($valuetmp[0]->image_store->id)){ ?>
+                                                    <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                                <?php }else{ ?>
+                                                    <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                                <?php } ?>   
                                             <?php }else{ ?>
                                                 <img src="<?= ImgNoProduct()?>"  style="height:50px">
                                             <?php } ?>
@@ -131,8 +135,12 @@
                                         <?php }else{ ?>
                                        
                                             <?php 
-                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)))){ ?>                                           
-                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct(@$valuetmp[0]->image_store->id, @$valuetmp[0]->image_store->new_name150)))){
+                                                if(!empty($valuetmp[0]->image_store->id)){ ?>
+                                                    <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                                <?php }else{ ?>
+                                                    <img src="<?= ImgNoProduct()?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                                <?php } ?>                                           
                                             <?php }else{ ?>
                                                 <img src="<?= ImgNoProduct()?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
                                             <?php } ?>                                        
