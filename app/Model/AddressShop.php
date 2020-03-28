@@ -23,7 +23,7 @@ class AddressShop extends Model
         'social_facebook',
         'social_line',
         'social_instagram',
-        'google_map'
+        'google_map',
         
     ];
     public function image_logo()

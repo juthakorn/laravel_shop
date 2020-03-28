@@ -1,59 +1,52 @@
-@extends('layouts.standard')
+@extends('layouts.standard_v2')
 
 @section('content')
 
-<div class="container m-t-3">
-    <div class="row">
-
-        <!-- Login Form -->
-        <div class="col-sm-6 col-xs-12 login-register-form m-b-3">
-            <div class="title"><span>{{ trans('common.login') }}</span></div>
-            <form class="" role="form" method="POST" action="{{ url(login()) }}">
-                {{ csrf_field() }}
-               
-               
-                @if (count($errors))
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+<div class="container-fluid limited mb-5">
+    <div class="row justify-content-center mt-4">
+        <div class="col-xs-12 col-sm-auto">
+            <div class="card">
+                <div class="card-body pt-2">
+                    <div class="text-center">
+                        <div class="d-inline-block border border-secondary rounded-circle text-center m-auto">
+                            <h1 class="px-2"><i class="material-icons align-middle md-3">person</i></h1>
+                        </div>
                     </div>
-                @endif
-                <div class="form-group{{ count($errors) ? ' has-error' : '' }}">
-                    <label for="emailInputLogin">{{ trans('common.Email address') }}</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('common.Email address') }}" required autofocus>
+                    <h5 class="card-title text-center">Please Enter Your Information</h5>
+                    <form class="" role="form" method="POST" action="{{ url(login()) }}">
+                        {{ csrf_field() }}
+                        @if (count($errors))
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+                        <div class="form-group{{ count($errors) ? ' has-error' : '' }}">
+                            <label for="emailInputLogin">{{ trans('common.Email address') }}</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" placeholder="{{ trans('common.Email address') }}" required autofocus>
+                        </div>
+                        <div class="form-group {{ count($errors) ? ' has-error' : '' }}">
+                            <label for="passwordInputLogin">{{ trans('common.Password') }}</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="{{ trans('common.Password') }}" required>
+                        </div>
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="rememberMe" name="remember">
+                            <label class="custom-control-label" for="rememberMe">{{ trans('common.Remember me') }}</label>
+                        </div>
+                        
+                        
+                        <button type="submit" class="btn btn-theme btn-sm btn-block my-3">{{ trans('common.login2') }}</button>
+                        <div class="form-group mb-0">
+                            <a href="{{ url(register())}}" class="text-secondary"><small><u>{{ trans('common.register') }}</u></small></a>
+                            <a href="#" class="float-right text-secondary"><small><u>{{ trans('common.Forgot your password') }}</u></small></a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group {{ count($errors) ? ' has-error' : '' }}">
-                    <label for="passwordInputLogin">{{ trans('common.Password') }}</label>
-                     <input type="password" name="password" id="password" class="form-control" placeholder="{{ trans('common.Password') }}" required>
-                </div>
-                <div class="checkbox pull-left" style="margin-top: 0">
-                    <label>
-                        <input type="checkbox" name="remember"><span> {{ trans('common.Remember me') }}</span>
-                    </label>
-                </div>
-                <div class="pull-right">
-                    <a href="{{ url(register())}}"><i class="fa fa-edit"></i> {{ trans('common.register') }}</a>
-                </div>
-                <div class="clearfix"></div>
-                <button type="submit" class="btn btn-default btn-theme"><i class="fa fa-long-arrow-right"></i> {{ trans('common.login2') }}</button>
-                <button type="button" class="btn btn-default btn-theme pull-right"> {{ trans('common.Forgot your password') }}</button>
-            </form>
-        </div>
-        <!-- End Login Form -->
-
-        <!-- Alternative Login Button -->
-        <div class="col-sm-6 col-xs-12">
-            <div class="title"><span>เข้าสู่ระบบด้วย Facebook</span></div>
-            <div style="margin: 35px 0 50px 0">
-            
-            <button style="width: 100%;" type="button" class="btn btn-primary btn-md"><i class="fa fa-facebook"></i> Login with Facebook</button>
             </div>
         </div>
-        <!-- End Alternative Login Button -->
-
     </div>
 </div>
 

@@ -29,7 +29,7 @@ class OrderController extends Controller
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('common.my_order') ],
         ];
-        return view('order.index',compact('navigator', 'order'));
+        return view('order.index_v2',compact('navigator', 'order'));
     }
     
     function detail($id){
@@ -47,8 +47,8 @@ class OrderController extends Controller
                 ['url' => customer_order(), 'text' => trans('common.my_order') ],
                 ['text' => trans('common.my_order')." #".$id ],
             ];
-            
-            return view('order.detail',compact('navigator', 'order', 'order_detail', 'payment'));
+            $banks = Bank::all(); //all
+            return view('order.detail_v2',compact('navigator', 'order', 'order_detail', 'payment', 'banks'));
         }else{
             return redirect(url(customer_order()));
         }
@@ -178,7 +178,7 @@ class OrderController extends Controller
         
         
         
-        return view('order.payment',compact('navigator', 'order', 'banks', 'hour', 'minute'));
+        return view('order.payment_v2',compact('navigator', 'order', 'banks', 'hour', 'minute'));
     }
     
     function payment_info($id){
@@ -192,7 +192,7 @@ class OrderController extends Controller
                 ['text' => trans('common.Payment Information')." #".$id ],
             ];
             
-            return view('order.payment_info',compact('navigator', 'order', 'payment'));
+            return view('order.payment_info_v2',compact('navigator', 'order', 'payment'));
         }else{
             return redirect(url(customer_order()));
         }

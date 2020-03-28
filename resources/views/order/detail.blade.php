@@ -66,7 +66,7 @@
                             <tr>
                                 <td class="right"><strong>{{ trans('cart.Order status') }} :</strong></td>
                                 <td class="left" ><?php $status = status($order->status); ?>                            
-                                    <span class="label label-{{ @$status['class'] }}" style="{{ @$status['style'] }}">{{ $status['text'] }}</span>
+                                    <span class="label label-<?= @$status['class'] ?>" style="<?= @$status['style'] ?>">{{ $status['text'] }}</span>
                                 </td>
                             </tr>
                             <tr>

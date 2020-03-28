@@ -2,7 +2,7 @@
 // English
 return [
 
-    'p_sell_status_1' => 'Ready Stock',
+    'p_sell_status_1' => 'In Stock',
     'p_sell_status_2' => 'Out Stock',
     'p_sell_status_3' => 'เร็วๆนี้',
     'p_sell_status_4' => 'เลิกจำหน่าย',

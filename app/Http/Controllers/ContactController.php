@@ -31,7 +31,7 @@ class ContactController extends Controller
             ['text' => trans('common.Contact Us') ],
         ];
         
-        return view('contact.index',$teturn);
+        return view('contact.index_v2',$teturn);
     }
     
     /**

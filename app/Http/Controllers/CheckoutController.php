@@ -43,7 +43,7 @@ class CheckoutController extends Controller
             
         ];
         
-        return view('checkout.address',compact('navigator', 'recommend', 'order', 'address', 'province'));
+        return view('checkout.address_v2',compact('navigator', 'recommend', 'order', 'address', 'province'));
     }
     
     function form_address($id=null) {
@@ -58,7 +58,7 @@ class CheckoutController extends Controller
         
         $teturn['province'] = $this->province;
         
-        return view('checkout.form_address',$teturn);
+        return view('checkout.form_address_v2',$teturn);
     }
     
     public function save_address(Request $request)
@@ -135,14 +135,14 @@ class CheckoutController extends Controller
             
         ];
         
-        return view('checkout.verify',compact('navigator', 'recommend', 'order'));
+        return view('checkout.verify_v2',compact('navigator', 'recommend', 'order'));
         
     }
 
         
     function success(Request $request) {
         
-        if($request->isMethod('post') && !empty($request->all())){                   
+        if($request->isMethod('post') && !empty($request->all())){
 //            prx($request->all());
             $order = Auth::user()->OrderTemp;
             if(empty($order)){                
@@ -240,9 +240,9 @@ class CheckoutController extends Controller
 
             ];
 
-             return view('checkout.success',compact('navigator', 'banks', 'order'));
+             return view('checkout.success_v2',compact('navigator', 'banks', 'order'));
                       
-        } else {
+        } else {            
             return redirect(url("/"));
         }
         

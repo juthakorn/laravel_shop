@@ -21,7 +21,7 @@ class UpdatePasswordController extends Controller
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('user.Change Password') ],
         ];
-        return view('auth.form_password',$teturn);
+        return view('auth.form_password_v2',$teturn);
     }
     /**
      * Update the password for the user.

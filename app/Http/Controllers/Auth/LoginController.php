@@ -46,10 +46,7 @@ class LoginController extends Controller
      */
     public function showLoginForm()
     {
-        $data['navigator'] = [
-            ['url' => '/','text' => trans('common.home')],
-            ['text' => trans('common.login')],
-        ];
+        $data['loginpage'] = TRUE;
         return view('auth.login',$data);
     }
 

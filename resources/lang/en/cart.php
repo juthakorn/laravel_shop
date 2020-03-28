@@ -55,7 +55,8 @@ return [
     'Cash on Delivery' => 'Cash on Delivery',
     'Transfer money' => 'Transfer money',
     'Destination fee' => 'Destination fee',
-    'Payment Channel' => 'Payment Channel'
+    'Payment Channel' => 'Payment Channel',
+    'Availability' => 'Availability'
     
 ];
 

@@ -26,7 +26,7 @@ class ForumController extends Controller
             ['text' => trans('common.Forum') ],
         ];
         
-        return view('forum.index',$teturn);
+        return view('forum.index_v2',$teturn);
     }
     
     public function new_thread(){

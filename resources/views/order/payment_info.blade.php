@@ -114,7 +114,7 @@
                                     </td>
                                     <td>{{ DateTime($value->created_at, TRUE) }}</td>
                                     <td class="text-center">
-                                        <span class="label label-{{ @$status['class'] }}" style="{{ @$status['style'] }}">{{ $status['text'] }}</span>
+                                        <span class="label label-<?= @$status['class'] ?>" style="<?= @$status['style'] ?>">{{ $status['text'] }}</span>
                                     </td>
                                     <td class="text-right">{{ number_format($value->final_sum,2) }}</td>
                                     

@@ -39,7 +39,7 @@ class BlogController extends Controller
         ];
         $teturn['blogs'] = Blog::orderBy('id', 'desc')->with('image_logo')
                 ->paginate(6);
-        return view('blog.front_index',$teturn);
+        return view('blog.front_index_v2',$teturn);
     }
     
     /**
@@ -90,7 +90,7 @@ class BlogController extends Controller
             ['url' => UrlArticle(),'text' => trans('common.Article') ],
             ['text' =>$blog->blog_name ],
         ];
-        return view('blog.show',$teturn);
+        return view('blog.show_v2',$teturn);
     }
     
     public function show_tag($tag)
@@ -103,7 +103,7 @@ class BlogController extends Controller
         $teturn['headtext'] = trans('common.Tags')." : ".$tag;
         $teturn['blogs'] = Blog::where("tags", 'LIKE', '%,'.$tag.',%')->orderBy('id', 'desc')
                 ->paginate(6);
-        return view('blog.front_index',$teturn);
+        return view('blog.front_index_v2',$teturn);
     }
     
     public function show_date($date)
@@ -116,7 +116,7 @@ class BlogController extends Controller
         $teturn['headtext'] = "Archives : ".date("F Y", strtotime($date));
         $teturn['blogs'] = Blog::where("created_at", 'LIKE', date("Y-m", strtotime($date)).'%')->orderBy('id', 'desc')
                 ->paginate(6);
-        return view('blog.front_index',$teturn);
+        return view('blog.front_index_v2',$teturn);
     }
     
     

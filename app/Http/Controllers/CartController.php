@@ -56,7 +56,7 @@ class CartController extends Controller
 //        pr($data);
         $ajax_data = $data;
         $request_data = $request['data'];
-        return view('cart.dropdown-cart',compact('ajax_data','request_data'));
+        return view('cart.modal-cart',compact('ajax_data','request_data'));
         
     }
     
@@ -87,7 +87,7 @@ class CartController extends Controller
         }
         $ajax_data = $data;
         
-        return view('cart.dropdown-cart',compact('ajax_data')); 
+        return view('cart.modal-cart',compact('ajax_data')); 
     }
     
        
@@ -102,7 +102,7 @@ class CartController extends Controller
             ['text' => trans('cart.Shopping Cart') ],
         ];
         
-        return view('cart.index',compact('navigator','recommend', 'delivery', 'payment'));
+        return view('cart.index_v2',compact('navigator','recommend', 'delivery', 'payment'));
     }
     
     
@@ -134,7 +134,7 @@ class CartController extends Controller
         
         
         $ajax_data = $data;
-        return view('cart.dropdown-cart',compact('ajax_data'));
+        return view('cart.modal-cart',compact('ajax_data'));
         
         
     }

@@ -48,7 +48,7 @@ class UserController extends Controller
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('common.profile') ],
         ];
-        return view('user.profile',$teturn);
+        return view('user.profile_v2',$teturn);
     }
     
     /**
@@ -83,7 +83,7 @@ class UserController extends Controller
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('user.My Address') ],
         ];
-        return view('user.address',$teturn);
+        return view('user.address_v2',$teturn);
     }
     
     
@@ -100,17 +100,19 @@ class UserController extends Controller
 //        จะเช็คสิทธิ์การเข้าถึงด้วย แบบใช้ model
 //        $teturn['address'] = Auth::user()->Address()->find($id);
         
-//        จะเช็คสิทธิ์การเข้าถึงด้วย แบบสร้างเอง
-        $teturn['address'] = Address::findOrFail($id);        
-        if(Auth::user()->id != $teturn['address']->user_id){
-            return redirect(url(customer_address()));
-        }
+//        จะเช็คสิทธิ์การเข้าถึงด้วย authorize
+        $teturn['address'] = Address::findOrFail($id);     
+        $this->authorize('modify', $teturn['address']);
+        
+//        if(Auth::user()->id != $teturn['address']->user_id){
+//            return redirect(url(customer_address()));
+//        }
         $teturn['province'] = $this->province;
         $teturn['navigator'] = [
             ['url' => '/','text' => trans('common.home')],
             ['text' => trans('user.My Address') ],
         ];
-        return view('user.address_edit',$teturn);
+        return view('user.address_edit_v2',$teturn);
     }
     
     public function address_update(Request $request, $id)

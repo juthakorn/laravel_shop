@@ -49,10 +49,7 @@ class RegisterController extends Controller
      */
     public function showRegistrationForm()
     {
-        $data['navigator'] = [
-            ['url' => '/','text' => trans('common.home')],
-            ['text' => trans('common.register')],
-        ];
+        $data['loginpage'] = TRUE;
         return view('auth.register', $data);
     }
 

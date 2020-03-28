@@ -1,0 +1,152 @@
+@extends('layouts.standard_v2')
+
+@section('content')
+<div class="container-fluid limited mb-5">
+    <div class="row">
+
+        <!-- Account Sidebar -->
+        @include("user.account-sidebar_v2")
+        <!-- End Account Sidebar -->
+
+        <div class="col-lg-9 col-md-8">
+            <div class="title"><span>{{ trans('common.Payment Information')." #".$payment->id }}</span></div>    
+            
+                           
+            <div class="table-responsive">      
+                 
+                <table class="table table-gray" style=" margin: 20px auto; width: 500px;" >
+                    <thead>
+                      <tr>
+                        <td class="center" colspan="2">{{ trans('common.Payment Information') }}</td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="right" style="width: 35%;"><strong>{{ trans('common.Payment notification') }} :</strong></td>
+                            <td class="left" style="width: 65%;">{{ DateTime($payment->created_at, TRUE) }}</td>
+                        </tr>
+                        <tr>
+                            <td class="right"><strong>{{ trans('common.Bank account') }} :</strong></td>
+                            <td class="left">
+                                <?php $bank = unserialize($payment->bank_info); ?>                                        
+                                <img class="media-object img-thumbnail" src="<?= url("image/" . imgbank($bank['bank_name'])) ?>" title="<?= $bank['bank_name'] ?>" style="border-radius: 32px;width: 40px; float: left" >   
+                                <div style="float: left;margin-left: 10px;text-align: left;"><p style="margin-bottom: 0">{{ $bank['bank_name'] }}</p><p style="margin-bottom: 0">{{ $bank['bank_number'] }}</p></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right"><strong>{{ trans('common.Transfer Date') }} :</strong></td>
+                            <td class="left" >{{ DateTime($payment->transfer_date)." ".$payment->transfer_time.":00" }}</td>
+                        </tr>
+                        <tr>
+                            <td class="right"><strong>{{ trans('common.Amount') }} :</strong></td>
+                            <td class="left" >{{ number_format($payment->transfer_pay,2)." ".trans('cart.baht')  }}</td>
+                        </tr>
+                        <tr>
+                            <td class="right"><strong>{{ trans('common.Status') }} :</strong></td>
+                            <td class="left" ><?php $status = statuspay($payment->status); ?>                            
+                                <span class="label label-{{ @$status['class'] }}" >{{ $status['text'] }}</span>
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td class="right"><strong>{{ trans('common.Transfer proof') }} :</strong></td>
+                            <td class="left" >
+                                <?php if(!empty($payment['transfer_file'])){ ?>
+                                <img class="media-object img-thumbnail" src="<?= url("uploads/image_payment/" . $payment['transfer_file']) ?>" style="max-width: 308px"  >   
+                                <?php }else{ echo "-";}?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="right" style="border-bottom: 1px solid #ddd;"><strong>{{ trans('common.More detail') }} :</strong></td>
+                            <td class="left" style="border-bottom: 1px solid #ddd;" >{{ !empty($payment->transfer_note) ? $payment->transfer_note : "-" }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row" style=" margin-top: 10px;">  
+                <div class="col-md-12">
+                    <div class="title" style="border-bottom:none; margin-bottom:8px;"><span style="border-bottom:none">{{ trans('cart.Order') }}</span></div>   
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-gray">
+                            <thead>
+                                <tr>                                    
+                                    <td class="center" >{{ trans('cart.Order number') }}</td>
+                                    <td class="center" >{{ trans('cart.Product') }}</td>
+                                    <td class="center" >{{ trans('cart.Order date') }}</td>                                    
+                                    <td class="text-center">{{ trans('cart.Order status') }}</td>
+                                    <td class="center" style=" width: 110px" >{{ trans('cart.Price') }} (฿)</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $total = 0;
+                                    foreach ($order as $key => $value) {
+                                        $status = status($value->status);
+                                        $total += $value->final_sum;
+                                    ?>
+                                <tr class="vertical-middle">
+                                    <td class="center"><a href="{{ url(customer_order_detail($value->order_id)) }}"><span class="badge2">{{ $value->order_id }}</span></a></td>
+                                    <td>
+                                    <?php
+                                    $temp = $value->order_detail->groupBy('product_id');                                    
+                                    foreach ($temp as $keytmp => $valuetmp) {                                       
+                                       $product = App\Model\Product::find($keytmp);  ?>
+                                        <?php if($product != null) {?>
+                                            <a href="{{ url(UrlProduct($valuetmp[0]->product_id, $product->slug_url)) }}" style="text-decoration: none;" title="{{ $valuetmp[0]->p_name }}">
+                                        <?php                                           
+
+                                            if(file_exists(str_replace(url("/")."/", "", ImgProduct(@$valuetmp[0]->image_store->id, @$valuetmp[0]->image_store->new_name150)))){
+                                                if (!empty($valuetmp[0]->image_store->id)) { ?>                                           
+                                            <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150)?>" style="height:50px">
+                                                <?php }else{ ?>
+                                                    <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                                <?php } ?>
+                                            <?php }else{ ?>
+                                                <img src="<?= ImgNoProduct()?>"  style="height:50px">
+                                            <?php } ?>
+                                        </a>
+                                        <?php }else{ ?>
+                                            <?php
+                                            if (file_exists(str_replace(url("/") . "/", "", ImgProduct(@$valuetmp[0]->image_store->id, @$valuetmp[0]->image_store->new_name150)))) {
+                                                if (!empty($valuetmp[0]->image_store->id)) {
+                                                    ?>
+                                                    <img src="<?= ImgProduct($valuetmp[0]->image_store->id, $valuetmp[0]->image_store->new_name150) ?>" style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                                <?php } else { ?>
+                                                    <img src="<?= ImgNoProduct() ?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                                <?php } ?>                                              
+                                            <?php } else { ?>
+                                                <img src="<?= ImgNoProduct() ?>"  style="height:50px" title="{{ $valuetmp[0]->p_name }}">
+                                            <?php } ?>
+                                                                              
+                                        <?php }                                                                                                                        
+                                    }
+                                    ?>
+                                    </td>
+                                    <td>{{ DateTime($value->created_at, TRUE) }}</td>
+                                    <td class="text-center">
+                                        <span class="label label-<?= @$status['class'] ?>" style="<?= @$status['style'] ?>">{{ $status['text'] }}</span>
+                                    </td>
+                                    <td class="text-right">{{ number_format($value->final_sum,2) }}</td>
+                                    
+                                </tr>  
+                                <?php }?>
+                                <tr>
+                                    <td colspan="4" class="text-right" >{{ trans('cart.Total') }}</td>
+                                    <td class="text-right">{{ number_format($total,2) }}</td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>     
+           
+        </div>
+    </div>
+</div>
+
+
+@endsection
+
+
+@section('script')
+<script src="{{ URL::asset('shop-v2/js/customer.js') }}"></script>
+@endsection

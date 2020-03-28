@@ -55,5 +55,6 @@ return [
     'Cash on Delivery' => 'เก็บเงินปลายทาง',
     'Transfer money' => 'โอนเงิน',
     'Destination fee' => 'ค่าบริการเก็บเงินปลายทาง',
-    'Payment Channel' => 'ช่องทางชำระเงิน'
+    'Payment Channel' => 'ช่องทางชำระเงิน',
+    'Availability' => 'สถานะ'
 ];

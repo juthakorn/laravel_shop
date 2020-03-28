@@ -5,7 +5,7 @@
 @endif
 <?php  if(session('message-custom')){ ?>
     <div id="message" class="callout callout-<?= @session()->get('message-custom')['type'] ?> alert-dismissable">
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true" onclick="$('#message').hide()">×</button>
         <?= @session()->get('message-custom')['text'] ?>
     </div>
 

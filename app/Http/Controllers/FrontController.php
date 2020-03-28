@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use DB;
 use App\Model\Product;
+use App\Model\Category;
 class FrontController extends Controller
 {
     public function index()
@@ -16,7 +17,11 @@ class FrontController extends Controller
         $data['recommend'] = $this->get_group_product("recommend");
         $data['slide'] = true;
         
-        return view('front.index',$data);
+        
+//        $category = Category::where([['active', '=', '1'] , ['parent_id', '=', '0']])->select('id', 'cat_name')->with('SubCategory')->orderBy('position', 'asc')->get();
+    
+//        $return = Product::where('p_best_sell',1)->inRandomOrder()->take(5)->get();
+        return view('front.index_v2',$data);
     }
     
     public function product_all() {
@@ -60,7 +65,7 @@ class FrontController extends Controller
             ['text' => $product->p_name ],
         ];
         
-        return view('front.product_detail',$teturn);
+        return view('front.product_detail_v2',$teturn);
     }
     
     public function urlp() {
