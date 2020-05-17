@@ -24,7 +24,7 @@ class FrontController extends Controller
         return view('front.index_v2',$data);
     }
     
-    public function product_all() {
+    public function product_all(Request $request) {
         
 //        \DB::enableQueryLog();
         $products = Product::where('p_active' , 1)
@@ -33,8 +33,19 @@ class FrontController extends Controller
                 }])
             ->orderBy('id', 'desc')
             ->paginate(20);
+        
+        //navigator
+        $navigator = [
+            ['url' => '/','text' => trans('common.home')],
+            ['text' => trans('common.Products')],
+        ];
 //        pr(\DB::getQueryLog());
-        return view('front.product_all',compact('products'));
+        if (!empty($request->get("new"))){
+            return view('front.product_all_v2',compact('products', 'navigator'));
+        }else{
+            return view('front.product_all',compact('products'));
+        }
+        
     }
     
     public function product($id,$name=NULL){
